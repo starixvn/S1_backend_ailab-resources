@@ -8,11 +8,6 @@ namespace AiLab_Resources.Core.Services
 {
     public class GoogleSheetResourcesGenerator : IResourcesGenerator
     {
-        public GoogleSheetResourcesGenerator()
-        {
-     
-        }
-
         public void ResourcesGeneratorResx(GoogleSheetConfig config, List<string> sheetNames,string prefix,string outPutFolder)
         {
             Console.WriteLine($"{prefix.Replace("_","")} ResourcesGenerator Start");
@@ -80,7 +75,7 @@ namespace AiLab_Resources.Core.Services
         private string GetResourcesPath(string projectName)
         {
             var currentDirectory = Directory.GetCurrentDirectory();
-            var replaceResultPath = currentDirectory.Replace("\\bin\\Debug\\net6.0", "");
+            var replaceResultPath = currentDirectory.Replace("\\bin\\Debug\\net6.0", ""); //.NET 版本若升級記得改版號
             var resourcesPath = Path.Combine(replaceResultPath, "Resources", "Resx", projectName);
             return resourcesPath + "\\";
         }
