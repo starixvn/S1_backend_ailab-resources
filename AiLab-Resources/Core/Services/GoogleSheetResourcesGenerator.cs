@@ -2,79 +2,83 @@
 using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using ICSharpCode.Decompiler.Util;
-using Microsoft.Extensions.Configuration;
 using AiLab_Resources.Core.Models;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace AiLab_Resources.Core.Services
 {
     public class GoogleSheetResourcesGenerator : IResourcesGenerator
     {
-        private string outputFilePath = Directory.GetCurrentDirectory();
-        private readonly GoogleSheetConfig _config;
-
-        public GoogleSheetResourcesGenerator(IServiceProvider provider)
+        public GoogleSheetResourcesGenerator()
         {
-            var configuration = provider.GetRequiredService<IConfiguration>();
-            _config = configuration.GetSection("GoogleSheetConfig").Get<GoogleSheetConfig>();
+     
         }
 
-        public void ResourcesGenerator()
+        public void ResourcesGeneratorResx(GoogleSheetConfig config, List<string> sheetNames,string prefix,string outPutFolder)
         {
             var service = new SheetsService(new BaseClientService.Initializer
             {
-                ApplicationName = _config.ApplicationName,
-                ApiKey = _config.GoogleSheetApiKey,
+                ApplicationName = config.ApplicationName,
+                ApiKey = config.GoogleSheetApiKey,
             });
 
-            var sheetId = _config.GoogleSheetInfo.SheetId;
-            var sheetsRequest = service.Spreadsheets.Get(sheetId);
-            var spreadsheet = sheetsRequest.Execute();
-            var sheetList = spreadsheet.Sheets
-                .OrderByDescending(s => s.Properties.Title);
-            foreach (var s in sheetList)
+            var sheetId = config.GoogleSheetInfo.SheetId;
+
+            foreach (var sheetName in sheetNames)
             {
-                Console.WriteLine(s.Properties.Title);
-            }
-
-            var sheetName = _config.GoogleSheetInfo.MemberSiteSheetNames.FirstOrDefault();
-            var sheetRequest = service.Spreadsheets.Values.Get(sheetId, sheetName);
-            var sheet = sheetRequest.Execute();
-
-            var values = sheet.Values;
-
-
-            if (values != null && values.Count > 0)
-            {
-                var titleRow = values.First();
-                var langIdx = 1;
+                var sheetRequest = service.Spreadsheets.Values.Get(sheetId, sheetName);
+                var sheet = sheetRequest.Execute();
+                var sheetObjectValue = sheet.Values;
                 
-                foreach (var lang in titleRow.Skip(1))
+                if (sheetObjectValue is { Count: > 0 })
                 {
-                    var langId = lang.ToString()!.ToLower();
-                    using ResXResourceWriter resxWriter = new ResXResourceWriter(outputFilePath + $"MemberSite_{langId}.resx");
-                    foreach (var row in values.Skip(1))
+                    var titleRow = sheetObjectValue.First();
+                    var langIdx = 1;
+
+                    foreach (var lang in titleRow.Skip(1))
                     {
-                        if (row.Count == 0) continue; // 避免 key沒填寫
-                        if(langIdx >= row.Count) continue; //避免除了 Key 以外都沒有 value
-                        
-                        var key = row[0].ToString();
-                        if(string.IsNullOrEmpty(key)) continue;
+                        var resourceName = GetResourceFileName(lang, sheetName, prefix);
+                        var resourcePath = GetResourcesPath(outPutFolder);
 
-                        var value = row[langIdx].ToString().Trim();
-                        if (string.IsNullOrEmpty(value)) continue;
+                        using var resxWriter = new ResXResourceWriter($"{resourcePath}{resourceName}");
+                        foreach (var row in sheetObjectValue.Skip(1))
+                        {
+                            if (row.Count == 0) continue; // 避免 key沒填寫
+                            if (langIdx >= row.Count) continue; //避免除了 Key 以外都沒有 value
 
-                        resxWriter.AddResource(key, value);
+                            var key = row[0].ToString();
+                            if (string.IsNullOrEmpty(key)) continue;
+
+                            var value = row[langIdx].ToString()?.Trim();
+                            if (string.IsNullOrEmpty(value)) continue;
+
+                            resxWriter.AddResource(key, value);
+                        }
+                        langIdx++;
+                        Console.WriteLine($"{resourceName} Generator Done");
                     }
-                    langIdx++;
+                }
+                else
+                {
+                    Console.WriteLine($"{sheetName} data found.");
                 }
             }
-            else
-            {
-                Console.WriteLine(@"No data found.");
-            }
+        }
 
-            Console.WriteLine(@"resx generator done");
+        private string GetResourceFileName(object lang, string sheetName,string replacePrefix)
+        {
+            var langId = lang.ToString()!.ToLower();
+            var resourceName = langId == "value"
+                ? $"{sheetName.Substring(replacePrefix.Length)}.resx"
+                : $"{sheetName.Substring(replacePrefix.Length)}_{langId}.resx";
+            return resourceName;
+        }
+        
+        private string GetResourcesPath(string projectName)
+        {
+            var currentDirectory = Directory.GetCurrentDirectory();
+            var replaceResultPath = currentDirectory.Replace("\\bin\\Debug\\net6.0", "");
+            var resourcesPath = Path.Combine(replaceResultPath, "Resources", "Resx", projectName);
+            return resourcesPath + "\\";
         }
     }
 }

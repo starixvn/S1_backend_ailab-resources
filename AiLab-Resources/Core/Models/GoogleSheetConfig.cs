@@ -11,8 +11,8 @@ namespace AiLab_Resources.Core.Models
     public class GoogleSheetInfo
     {
         public string SheetId { get; set; }
-        public List<string> MemberSiteSheetNames { get; set; }
-        public List<string> BackEndSiteSheetNames { get; set; }
+        public List<string> MemberSites { get; set; }
+        public List<string> BackendSites { get; set; }
         public List<string> BonusServices { get; set; }
     }
 }

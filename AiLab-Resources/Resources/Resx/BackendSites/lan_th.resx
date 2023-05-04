@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="lbl_WithdrawalApprovedTitle"><value>รายการถอนของคุณ {0} อนุมัติแล้ว!</value></data>
+  <data name="lbl_CancelBonusTitle"><value>ประกาศการหมดอายุของโปรโมชั่น</value></data>
+  <data name="lbl_DepositApprovedContent"><value>ยินดีด้วยค่ะ! รายการฝากเงิน {0} อนุมัติแล้ว! ยอดเงินได้โอนเข้าบัญชีคุณเรียบร้อยแล้ว และขอให้คุณโชคดีในการเดิมพันของคุณ!</value></data>
+  <data name="lbl_WithdrawalRejectTitle"><value>รายการถอนของคุณ {0} ถูกปฏิเสธ!</value></data>
+  <data name="lbl_WithdrawalRejectContent"><value>ขออภัย รายการถอนเงิน {0} ถูกปฏิเสธ กรุณาติดต่อ CSD เพื่อสอบถามรายละเอียดเพิ่มเติม</value></data>
+  <data name="lbl_CancelBonus1"><value>โปรโมชั่นโบนัสของคุณถูกยกเลิก</value></data>
+  <data name="lbl_DepositRejectTitle"><value>รายการฝากของคุณ {0} ถูกปฏิเสธ!</value></data>
+  <data name="lbl_WithdrawalApprovedContent"><value>ขอบคุณสำหรับการสนับสนุนของคุณ รายการถอนเงิน {0} ของท่านอนุมัติแล้ว! เราหวังว่าจะได้พบคุณอีกในครั้งต่อไป</value></data>
+  <data name="lbl_DepositApprovedTitle"><value>รายการฝากของคุณ {0} อนุมัติแล้ว!</value></data>
+  <data name="lbl_DepositRejectContent"><value>ขออภัย รายการฝากเงิน {0} ถูกปฏิเสธ กรุณาติดต่อ CSD เพื่อสอบถามรายละเอียดเพิ่มเติม</value></data>
+  </root>

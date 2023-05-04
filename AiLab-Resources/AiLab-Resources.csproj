@@ -21,7 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Resx\MemberSite\" />
+    <Folder Include="Resources\Resx\BackendSites\" />
+    <Folder Include="Resources\Resx\MemberSites\" />
   </ItemGroup>
 
   <ItemGroup>
