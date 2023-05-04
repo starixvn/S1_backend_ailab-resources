@@ -1,5 +1,4 @@
-﻿using System;
-namespace AiLab_Resources.Core.Models
+﻿namespace AiLab_Resources.Core.Models
 {
     public class GoogleSheetConfig
     {
@@ -14,5 +13,6 @@ namespace AiLab_Resources.Core.Models
         public List<string> MemberSites { get; set; }
         public List<string> BackendSites { get; set; }
         public List<string> CommonServices { get; set; }
+        public List<string> BonusServices { get; set; }
     }
 }

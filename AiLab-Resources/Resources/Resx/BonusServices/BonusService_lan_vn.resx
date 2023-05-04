@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="lbl_VipUpgradeTitle"><value>Nâng hạng VIP</value></data>
+  <data name="lbl_ReferredBonusCreditedMsg"><value>Xin chúc mừng! Bạn đã nhận được tín dụng miễn phí mà bạn đã giới thiệu {0}!</value></data>
+  <data name="lbl_VipUpgrade"><value>Xin chúc mừng! Bạn vừa được thăng hạng và nhận thưởng {0} {1}. Hãy tiếp tục chơi để nhận thêm nhiều quà tặng hấp dẫn!</value></data>
+  <data name="lbl_CancelBonusTitle"><value>Thông báo khuyến mãi hết hạn</value></data>
+  <data name="lbl_ReferralBonusCreditedMsg"><value>Xin chúc mừng! Phần thưởng giới thiệu của bạn {0} đã được ghi có vào tài khoản của bạn!</value></data>
+  <data name="lbl_RebateMsg"><value>Xin chúc mừng, khoản chiết khấu {0} đã được ghi có vào tài khoản của bạn!</value></data>
+  <data name="lbl_CancelBonus2"><value>Phần thưởng khuyến mãi của bạn đã bị hủy, số tiền được hoàn là {0}</value></data>
+  <data name="lbl_CancelBonus1"><value>Phần thưởng khuyến mãi của bạn đã bị hủy.</value></data>
+  <data name="lbl_VipDowngradeContent"><value>Chúng tôi rất tiếc phải thông báo, bạn sẽ bị xuống hạng thành viên VIP vì không đáp ứng yêu cầu duy trì hạng. Xin cám ơn!</value></data>
+  <data name="lbl_VipDowngradeTitle"><value>Thông báo Hạng thành viên VIP</value></data>
+  <data name="lbl_ReferralBonusCreditedTitle"><value>Giới thiệu bạn bè Phần thưởng [Giới thiệu và kiếm tiền]</value></data>
+  <data name="lbl_VerificationRewardContent"><value>Xin chúc mừng! Bạn đã được nhận thưởng {1} {0} vì đã xác thực tài khoản thành công.</value></data>
+  <data name="lbl_VerificationRewardLimitTitle"><value>Phần thưởng xác thực.</value></data>
+  <data name="lbl_VerificationRewardLimit"><value>Vui lòng nạp thêm số tiền {1} {0} để nhận Phần Thưởng.</value></data>
+  </root>

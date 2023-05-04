@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Resources\Resx\BackendSites\" />
+    <Folder Include="Resources\Resx\BonusServices\" />
     <Folder Include="Resources\Resx\CommonServices\" />
     <Folder Include="Resources\Resx\MemberSites\" />
   </ItemGroup>

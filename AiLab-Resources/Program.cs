@@ -16,14 +16,13 @@ class Program
         var services = new ServiceCollection();
         services.AddSingleton<IConfiguration>(config);
         services.AddTransient<IResourcesGenerator, GoogleSheetResourcesGenerator>();
-        services.AddTransient<MemberSiteResourcesReader>();
-        services.AddTransient<BackendSiteResourcesReader>();
-        services.AddTransient<CommonServiceResourcesReader>();
-        
+        //services.AddTransient<MemberSiteResourcesReader>();
+        //services.AddTransient<BackendSiteResourcesReader>();
+        //services.AddTransient<CommonServiceResourcesReader>();
+        //services.AddTransient<BonusServiceResourcesReader>();
 
         var serviceProvider = services.BuildServiceProvider();
-
-        //var resourcesProvider = serviceProvider.GetRequiredService<CommonServiceResourcesReader>();
+        //var resourcesProvider = serviceProvider.GetRequiredService<BonusServiceResourcesReader>();
         //resourcesProvider.ReadOldResourcesExportExcel();
 
         var configuration = serviceProvider.GetRequiredService<IConfiguration>();
@@ -31,11 +30,13 @@ class Program
 
 
         var resourcesProvider = serviceProvider.GetRequiredService<IResourcesGenerator>();
-        //resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.MemberSites, "MemberSite_", nameof(googleSheetConfig.GoogleSheetInfo.MemberSites));
-        //Console.WriteLine("==========================================");
-        //resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.BackendSites, "BackendSite_", nameof(googleSheetConfig.GoogleSheetInfo.BackendSites));
-        //Console.WriteLine("==========================================");
+        resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.MemberSites, "MemberSite_", nameof(googleSheetConfig.GoogleSheetInfo.MemberSites));
+        Console.WriteLine("==========================================");
+        resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.BackendSites, "BackendSite_", nameof(googleSheetConfig.GoogleSheetInfo.BackendSites));
+        Console.WriteLine("==========================================");
         resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.CommonServices, "CommonService_", nameof(googleSheetConfig.GoogleSheetInfo.CommonServices));
+        Console.WriteLine("==========================================");
+        resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.BonusServices, "BonusService_", nameof(googleSheetConfig.GoogleSheetInfo.BonusServices));
         Console.WriteLine("==========================================");
     }
 }
