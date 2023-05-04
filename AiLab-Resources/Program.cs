@@ -18,9 +18,12 @@ class Program
         services.AddTransient<IResourcesGenerator, GoogleSheetResourcesGenerator>();
         services.AddTransient<MemberSiteResourcesReader>();
         services.AddTransient<BackendSiteResourcesReader>();
+        services.AddTransient<CommonServiceResourcesReader>();
+        
+
         var serviceProvider = services.BuildServiceProvider();
 
-        //var resourcesProvider = serviceProvider.GetRequiredService<BackendSiteResourcesReader>();
+        //var resourcesProvider = serviceProvider.GetRequiredService<CommonServiceResourcesReader>();
         //resourcesProvider.ReadOldResourcesExportExcel();
 
         var configuration = serviceProvider.GetRequiredService<IConfiguration>();
@@ -28,8 +31,11 @@ class Program
 
 
         var resourcesProvider = serviceProvider.GetRequiredService<IResourcesGenerator>();
-        resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.MemberSites, "MemberSite_", nameof(googleSheetConfig.GoogleSheetInfo.MemberSites));
+        //resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.MemberSites, "MemberSite_", nameof(googleSheetConfig.GoogleSheetInfo.MemberSites));
+        //Console.WriteLine("==========================================");
+        //resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.BackendSites, "BackendSite_", nameof(googleSheetConfig.GoogleSheetInfo.BackendSites));
+        //Console.WriteLine("==========================================");
+        resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.CommonServices, "CommonService_", nameof(googleSheetConfig.GoogleSheetInfo.CommonServices));
         Console.WriteLine("==========================================");
-        resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.BackendSites, "BackendSite_", nameof(googleSheetConfig.GoogleSheetInfo.BackendSites));
     }
 }
