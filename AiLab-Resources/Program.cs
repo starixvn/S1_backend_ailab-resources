@@ -28,7 +28,8 @@ class Program
 
 
         var resourcesProvider = serviceProvider.GetRequiredService<IResourcesGenerator>();
-        //resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.MemberSites, "MemberSite_", nameof(googleSheetConfig.GoogleSheetInfo.MemberSites));
+        resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.MemberSites, "MemberSite_", nameof(googleSheetConfig.GoogleSheetInfo.MemberSites));
+        Console.WriteLine("==========================================");
         resourcesProvider.ResourcesGeneratorResx(googleSheetConfig, googleSheetConfig.GoogleSheetInfo.BackendSites, "BackendSite_", nameof(googleSheetConfig.GoogleSheetInfo.BackendSites));
     }
 }

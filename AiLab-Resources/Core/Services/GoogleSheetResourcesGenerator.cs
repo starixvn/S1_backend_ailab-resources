@@ -15,6 +15,8 @@ namespace AiLab_Resources.Core.Services
 
         public void ResourcesGeneratorResx(GoogleSheetConfig config, List<string> sheetNames,string prefix,string outPutFolder)
         {
+            Console.WriteLine($"{prefix.Replace("_","")} ResourcesGenerator Start");
+
             var service = new SheetsService(new BaseClientService.Initializer
             {
                 ApplicationName = config.ApplicationName,
@@ -62,6 +64,8 @@ namespace AiLab_Resources.Core.Services
                     Console.WriteLine($"{sheetName} data found.");
                 }
             }
+
+            Console.WriteLine($"{prefix.Replace("_", "")} ResourcesGenerator End");
         }
 
         private string GetResourceFileName(object lang, string sheetName,string replacePrefix)
