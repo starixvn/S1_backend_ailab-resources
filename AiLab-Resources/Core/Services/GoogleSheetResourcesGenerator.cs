@@ -8,6 +8,13 @@ namespace AiLab_Resources.Core.Services
 {
     public class GoogleSheetResourcesGenerator : IResourcesGenerator
     {
+        /// <summary>
+        /// 產生語系檔
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="sheetNames"></param>
+        /// <param name="prefix">專案名稱_</param>
+        /// <param name="outPutFolder">輸出資料夾名稱</param>
         public void ResourcesGeneratorResx(GoogleSheetConfig config, List<string> sheetNames,string prefix,string outPutFolder)
         {
             Console.WriteLine($"{prefix.Replace("_","")} ResourcesGenerator Start");

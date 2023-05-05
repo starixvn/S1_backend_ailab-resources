@@ -25,6 +25,14 @@
     <Folder Include="Resources\Resx\BonusServices\" />
     <Folder Include="Resources\Resx\CommonServices\" />
     <Folder Include="Resources\Resx\MemberSites\" />
+    <Folder Include="Resources\Resx\HangfireServices\" />
+    <Folder Include="Resources\Resx\StatisticalWorkers\" />
+    <Folder Include="Resources\Resx\PaymentServices\" />
+    <Folder Include="Resources\Resx\StoreServices\" />
+    <Folder Include="Resources\Resx\ThirdPartyBetHistorys\" />
+    <Folder Include="Resources\Resx\ThirdPartySeamlessWallets\" />
+    <Folder Include="Resources\Resx\ThirdPartyWagers\" />
+    <Folder Include="Resources\Resx\ThirdPartyServices\" />
   </ItemGroup>
 
   <ItemGroup>
