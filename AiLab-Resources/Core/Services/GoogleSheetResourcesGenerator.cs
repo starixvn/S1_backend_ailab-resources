@@ -81,10 +81,7 @@ namespace AiLab_Resources.Core.Services
         
         private string GetResourcesPath(string projectName)
         {
-            var currentDirectory = Directory.GetCurrentDirectory();
-            var replaceResultPath = currentDirectory.Replace("\\bin\\Debug\\net6.0", ""); //.NET 版本若升級記得改版號
-            var resourcesPath = Path.Combine(replaceResultPath, "Resources", "Resx", projectName);
-            return resourcesPath + "\\";
+            return Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "Resources", "Resx", projectName);
         }
     }
 }
