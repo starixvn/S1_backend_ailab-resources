@@ -15,9 +15,9 @@ namespace AiLab_Resources.Core.Services
         /// <param name="sheetNames"></param>
         /// <param name="prefix">專案名稱_</param>
         /// <param name="outPutFolder">輸出資料夾名稱</param>
-        public void ResourcesGeneratorResx(GoogleSheetConfig config, List<string> sheetNames,string prefix,string outPutFolder)
+        public void ResourcesGeneratorResx(GoogleSheetConfig config, List<string> sheetNames, string prefix, string outPutFolder)
         {
-            Console.WriteLine($"{prefix.Replace("_","")} ResourcesGenerator Start");
+            Console.WriteLine($"{prefix.Replace("_", "")} ResourcesGenerator Start");
 
             var service = new SheetsService(new BaseClientService.Initializer
             {
@@ -32,7 +32,7 @@ namespace AiLab_Resources.Core.Services
                 var sheetRequest = service.Spreadsheets.Values.Get(sheetId, sheetName);
                 var sheet = sheetRequest.Execute();
                 var sheetObjectValue = sheet.Values;
-                
+
                 if (sheetObjectValue is { Count: > 0 })
                 {
                     var titleRow = sheetObjectValue.First();
@@ -43,7 +43,7 @@ namespace AiLab_Resources.Core.Services
                         var resourceName = GetResourceFileName(lang, sheetName, prefix);
                         var resourcePath = GetResourcesPath(outPutFolder);
 
-                        using var resxWriter = new ResXResourceWriter($"{resourcePath}{resourceName}");
+                        using var resxWriter = new ResXResourceWriter($"{resourcePath}\\{resourceName}");
                         foreach (var row in sheetObjectValue.Skip(1))
                         {
                             if (row.Count == 0) continue; // 避免 key沒填寫
@@ -70,7 +70,7 @@ namespace AiLab_Resources.Core.Services
             Console.WriteLine($"{prefix.Replace("_", "")} ResourcesGenerator End");
         }
 
-        private string GetResourceFileName(object lang, string sheetName,string replacePrefix)
+        private string GetResourceFileName(object lang, string sheetName, string replacePrefix)
         {
             var langId = lang.ToString()!.ToLower();
             var resourceName = langId == "value"
@@ -78,7 +78,7 @@ namespace AiLab_Resources.Core.Services
                 : $"{sheetName.Substring(replacePrefix.Length)}_{langId}.resx";
             return resourceName;
         }
-        
+
         private string GetResourcesPath(string projectName)
         {
             return Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "Resources", "Resx", projectName);
